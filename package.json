@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://3bdduo-bit.github.io/PortMaker/",
+  "homepage": "https://3bdduo-bit.github.io/Portfolio-maker/",
   "engines": {
     "node": ">=22.0.0"
   },
