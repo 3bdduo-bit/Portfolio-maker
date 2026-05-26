@@ -436,7 +436,7 @@ export default function MakerPage({ user, onLogout }) {
                 Sign Out
               </button>
             </div>
-            <button className={s.hamburger} onClick={() => setMenuOpen(!menuOpen)}>
+            <button className={s.hamburger} aria-label="Toggle menu" onClick={() => setMenuOpen(!menuOpen)}>
               <span style={menuOpen ? { transform: 'rotate(45deg) translateY(10.5px)' } : {}} />
               <span style={menuOpen ? { opacity: 0, transform: 'scale(0)' } : {}} />
               <span style={menuOpen ? { transform: 'rotate(-45deg) translateY(-10.5px)' } : {}} />
@@ -567,7 +567,7 @@ export default function MakerPage({ user, onLogout }) {
               <input value={fiveamsat} onChange={e => setFiveamsat(e.target.value)} placeholder="https://khamsat.com/user/..." />
             </Field>
           </div>
-          {avatar && <img src={avatar} alt="preview" className={s.avatarPreview} style={{ display: avatarOk ? 'block' : 'none' }} onLoad={() => setAvatarOk(true)} onError={() => setAvatarOk(false)} />}
+          {avatar && <img src={avatar} alt="preview" className={s.avatarPreview} loading="lazy" width="120" height="120" style={{ display: avatarOk ? 'block' : 'none' }} onLoad={() => setAvatarOk(true)} onError={() => setAvatarOk(false)} />}
         </Card>
 
         {/* STATS */}
@@ -586,7 +586,7 @@ export default function MakerPage({ user, onLogout }) {
           <Field label="Add skills (press Enter or comma)">
             <div className={s.tagWrap} onClick={() => skillRef.current?.focus()}>
               {skills.map((sk, i) => (
-                <span key={i} className={s.tag}>{sk}<button type="button" onClick={() => rmSkill(i)}>×</button></span>
+                <span key={i} className={s.tag}>{sk}<button type="button" aria-label={`Remove skill ${sk}`} onClick={() => rmSkill(i)}>×</button></span>
               ))}
               <input ref={skillRef} className={s.tagInput} value={skillInput}
                 onChange={e => setSkillInput(e.target.value)} onKeyDown={onSkillKey} onBlur={commitSkill}
@@ -641,7 +641,7 @@ export default function MakerPage({ user, onLogout }) {
               <Field label="Tech Stack (comma-separated)" maxWords={15} value={p.tech}><input value={p.tech} onChange={e => upd(setProjects, p.id, 'tech', e.target.value, 15)} placeholder="React, Node.js, MongoDB" /></Field>
               <Field label="Project Image">
                 <input type="file" accept="image/*" onChange={e => onProjectImageUpload(p.id, e)} />
-                {p.image && <img src={p.image} alt={`${p.name || 'Project'} preview`} style={{ marginTop: '.6rem', width: '100%', maxWidth: '220px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '1px solid rgba(255,255,255,.15)' }} />}
+                {p.image && <img src={p.image} alt={`${p.name || 'Project'} preview`} loading="lazy" width="220" height="120" style={{ marginTop: '.6rem', width: '100%', maxWidth: '220px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '1px solid rgba(255,255,255,.15)' }} />}
               </Field>
               <label className={s.checkLabel}>
                 <input type="checkbox" checked={p.featured} onChange={e => upd(setProjects, p.id, 'featured', e.target.checked)} />
@@ -663,7 +663,7 @@ export default function MakerPage({ user, onLogout }) {
                   <div className={s.emojiRow}>
                     <input className={s.emojiInput} value={sv.icon} onChange={e => upd(setServices, sv.id, 'icon', e.target.value)} maxLength={4} />
                     <div className={s.emojiGrid}>
-                      {EMOJIS.slice(0, 16).map(em => (<button key={em} type="button" className={`${s.emojiBt} ${sv.icon === em ? s.emojiActive : ''}`} onClick={() => upd(setServices, sv.id, 'icon', em)}>{em}</button>))}
+                      {EMOJIS.slice(0, 16).map(em => (<button key={em} type="button" aria-label={`Select ${em} emoji`} className={`${s.emojiBt} ${sv.icon === em ? s.emojiActive : ''}`} onClick={() => upd(setServices, sv.id, 'icon', em)}>{em}</button>))}
                     </div>
                   </div>
                 </Field>
@@ -691,7 +691,7 @@ export default function MakerPage({ user, onLogout }) {
               </div>
               <Field label="Certificate Image">
                 <input type="file" accept="image/*" onChange={e => onCertImageUpload(c.id, e)} />
-                {c.image && <img src={c.image} alt="Cert preview" style={{ marginTop: '.6rem', width: '100%', maxWidth: '220px', height: '120px', objectFit: 'cover', borderRadius: '8px' }} />}
+                {c.image && <img src={c.image} alt="Cert preview" loading="lazy" width="220" height="120" style={{ marginTop: '.6rem', width: '100%', maxWidth: '220px', height: '120px', objectFit: 'cover', borderRadius: '8px' }} />}
               </Field>
             </div>
           ))}
@@ -812,6 +812,7 @@ export default function MakerPage({ user, onLogout }) {
                 <button key={c} type="button"
                   className={`${s.swatch} ${primaryColor === c ? s.activeSwatch : ''}`}
                   style={{ background: c }}
+                  aria-label={`Select color ${c}`}
                   onClick={() => setPrimaryColor(c)}
                 >
                   {primaryColor === c && <span className={s.check}>✓</span>}

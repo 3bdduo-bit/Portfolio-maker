@@ -123,7 +123,7 @@ function Testimonials({items}){
         <div className={s.tesQuote}>"</div>
         <p className={s.tesText}>{t.text}</p>
         <div className={s.tesAuthor}>
-          {t.avatar?<img src={t.avatar} alt={t.name} className={s.tesAvatar} loading="lazy"/>
+          {t.avatar?<img src={t.avatar} alt={`${t.name} avatar`} className={s.tesAvatar} loading="lazy" width="64" height="64"/>
             :<div className={s.tesAvatarFb}>{t.name[0]}</div>}
           <div>
             <div className={s.tesName}>{t.name}</div>
@@ -151,7 +151,7 @@ function Testimonials({items}){
 function CertCard({cert,onImageClick}){
   return(
     <div className={s.certCard}>
-      {cert.image&&<img src={cert.image} alt={cert.name} className={`${s.certImg} ${s.clickableImg}`} loading="lazy" onClick={()=>onImageClick(cert.image,cert.name)}/>}
+      {cert.image&&<img src={cert.image} alt={`${cert.name} certificate`} className={`${s.certImg} ${s.clickableImg}`} loading="lazy" width="400" height="240" onClick={()=>onImageClick(cert.image,cert.name)}/>}
       <div className={s.certBody}>
         <div className={s.certName}>{cert.name}</div>
         {cert.issuer&&<div className={s.certIssuer}>{cert.issuer}</div>}
@@ -528,7 +528,7 @@ function ProjCard({p,onImageClick}){
     <article
       className={`${s.projCard} ${p.featured?s.projFeatured:''}`}>
       {p.featured&&<div className={s.featuredBadge} aria-label="Featured project">⭐ Featured</div>}
-      {p.image&&<img src={p.image} alt={`${p.name} screenshot`} className={`${s.projImage} ${s.clickableImg}`} loading="lazy" onClick={()=>onImageClick(p.image,`${p.name} screenshot`)}/>}
+      {p.image&&<img src={p.image} alt={`${p.name} screenshot`} className={`${s.projImage} ${s.clickableImg}`} loading="lazy" width="600" height="330" onClick={()=>onImageClick(p.image,`${p.name} screenshot`)}/>}
       <div className={s.projBody}>
         <h3 className={s.projName}>{p.name}</h3>
         {p.desc&&<p className={s.projDesc}>{p.desc}</p>}

@@ -6,6 +6,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
+      aria-label="Toggle theme"
       style={{
         background: 'var(--accent-bg)',
         border: '1px solid var(--accent)',
