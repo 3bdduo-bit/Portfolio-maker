@@ -400,14 +400,15 @@ export default function MakerPage({ user, onLogout }) {
             <span>✨</span> port-make
           </a>
 
-          <div className={s.navLinks}>
+          <div className={s.navItems}>
             {navItems.map(item => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className={`${s.navLink} ${activeSection === item.id ? s.navActive : ''}`}
+                className={`${s.navItem} ${activeSection === item.id ? s.navActive : ''}`}
                 onClick={(e) => {
                   e.preventDefault();
+                  setActiveSection(item.id);
                 document.getElementById(item.id)?.scrollIntoView({ behavior: 'auto', block: 'start' });
 
                 }}
