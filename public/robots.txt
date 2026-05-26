@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /maker  # Don't index the editor page
+Disallow: /auth   # Don't index auth pages
+
+Sitemap: https://3bdduo-bit.github.io/PortMaker/sitemap.xml

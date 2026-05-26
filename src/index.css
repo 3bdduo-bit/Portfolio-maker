@@ -1,0 +1,245 @@
+:root {
+  /* Premium Light Mode - Refined Indigo & Slate */
+  --bg-primary-light: #f8fafc;
+  --bg-secondary-light: #ffffff;
+  --text-primary-light: #0f172a;
+  --text-secondary-light: #475569;
+  --accent-light: #6366f1;
+  --accent-hover-light: #4f46e5;
+  --accent-bg-light: #eef2ff;
+  --border-light: #e2e8f0;
+  --surface-light: #ffffff;
+  --accent-text-light: #4338ca;
+  
+  /* Premium Dark Mode - Deep Obsidian & Emerald */
+  --bg-primary-dark: #020617;
+  --bg-secondary-dark: #0f172a;
+  --text-primary-dark: #f8fafc;
+  --text-secondary-dark: #94a3b8;
+  --accent-dark: #10b981;
+  --accent-hover-dark: #059669;
+  --accent-bg-dark: rgba(16, 185, 129, 0.1);
+  --border-dark: #1e293b;
+  --surface-dark: #0f172a;
+  --accent-text-dark: #34d399;
+  
+  /* Active Variables */
+  --bg-primary: var(--bg-primary-light);
+  --bg-secondary: var(--bg-secondary-light);
+  --text-primary: var(--text-primary-light);
+  --text-secondary: var(--text-secondary-light);
+  --accent: var(--accent-light);
+  --accent-hover: var(--accent-hover-light);
+  --accent-bg: var(--accent-bg-light);
+  --accent-text: var(--accent-text-light);
+  --border: var(--border-light);
+  --surface: var(--surface-light);
+
+  /* Aliases for compatibility */
+  --text: var(--text-primary);
+  --muted: var(--text-secondary);
+
+
+  --radius-sm: 8px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --error: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  --grad-primary: linear-gradient(135deg, var(--accent), #8b5cf6);
+  --glass: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  
+  --surface-rgb: 255, 255, 255;
+  --accent-rgb: 99, 102, 241;
+}
+
+html[data-theme="dark"] {
+  --bg-primary: var(--bg-primary-dark);
+  --bg-secondary: var(--bg-secondary-dark);
+  --text-primary: var(--text-primary-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --accent: var(--accent-dark);
+  --accent-hover: var(--accent-hover-dark);
+  --accent-bg: var(--accent-bg-dark);
+  --accent-text: var(--accent-text-dark);
+  --border: var(--border-dark);
+  --surface: var(--surface-dark);
+  
+  /* Aliases for compatibility */
+  --text: var(--text-primary);
+  --muted: var(--text-secondary);
+
+  
+  --grad-primary: linear-gradient(135deg, var(--accent), #059669);
+  --glass: rgba(15, 23, 42, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  
+  --surface-rgb: 15, 23, 42;
+  --accent-rgb: 16, 185, 129;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Base UI Elements */
+input, textarea, select {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+  transform: translateY(-1px);
+}
+
+button,
+[class*="Btn"],
+[class*="btn"],
+[class*="Link"],
+[class*="pill"],
+[class*="Pill"] {
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.4s ease, 
+              filter 0.4s ease, 
+              background 0.3s ease, 
+              border-color 0.3s ease,
+              color 0.3s ease;
+  will-change: transform, box-shadow;
+}
+
+button:hover,
+[class*="Btn"]:hover,
+[class*="btn"]:hover,
+[class*="Link"]:hover,
+[class*="pill"]:hover,
+[class*="Pill"]:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 10px 25px color-mix(in srgb, var(--accent, var(--pA1, #6366f1)) 30%, rgba(0,0,0,0.3));
+  filter: brightness(1.1);
+}
+
+button:focus-visible,
+[class*="Btn"]:focus-visible,
+[class*="btn"]:focus-visible,
+[class*="Link"]:focus-visible,
+[class*="pill"]:focus-visible,
+[class*="Pill"]:focus-visible {
+  outline: 3px solid var(--accent, var(--pA1, #6366f1));
+  outline-offset: 4px;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px color-mix(in srgb, var(--accent, var(--pA1, #6366f1)) 40%, rgba(0,0,0,0.2));
+}
+
+button:active,
+[class*="Btn"]:active,
+[class*="btn"]:active,
+[class*="Link"]:active,
+[class*="pill"]:active,
+[class*="Pill"]:active {
+  transform: translateY(2px) scale(0.96) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+  filter: brightness(0.9) !important;
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.1s ease !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+/* Utility Classes */
+.text-animate {
+  animation: fadeInDown 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom Scrollbar Styles for visual premium feel */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
